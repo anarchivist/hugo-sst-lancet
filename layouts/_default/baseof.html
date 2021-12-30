@@ -4,10 +4,12 @@
   <body>
     {{- partial "header.html" . -}}
     <div class="container">
-    {{- partial "nav-side.html" . -}}
-    <main id="main">
-    {{- block "main" . }}{{- end }}
-    </main>
+      {{- partial "nav-side.html" . -}}
+      <main id="main">
+        <div class="main-container">
+          {{- block "main" . }}{{- end }}
+        </div>
+      </main>
     </div>
     {{- partial "footer.html" . -}}
   </body>

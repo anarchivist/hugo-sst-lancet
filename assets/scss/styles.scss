@@ -3,20 +3,20 @@
 
 html {
   background: $background-base-color;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
 }
 
 body {
-  min-height: 95vh;
+  // base typography
   font: $type-base-size -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
   font-size: clamp($type-base-size, strip-units($type-base-size) + 0.5vw, $type-base-size * 1.33);
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  display: flex;
-  flex-direction: column;
-  margin: $margin-base * 1vh $margin-base * 1vw;
+  // -- font colors
   background: $background-base-color;
   a, a:hover, a:visited {
     color: inherit;
@@ -27,9 +27,16 @@ body {
     padding: 10px;
   }
 
+  // flexbox config
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  margin: $margin-base * 1vh $margin-base * 1vw;
+
+  // skip link
   .skip-to-main {
     position: absolute;
-    top: -66px;
+    top: $margin-base * -2vh;
     left: 0;
     z-index: 100;
     font-variant: small-caps;
@@ -39,16 +46,21 @@ body {
       text-align: center;
     }
     &:hover {
-    top: 0;
+      top: 0;
     }
   }
+
+  // primary container
   .container {
-    //height: 100%;
     display: flex;
     flex: 1 0 auto;
-    > nav {
-      flex-basis: 20%;
+    flex-wrap: wrap;
+    margin: $margin-base * 1vh 0;
+    // sidebar
+    > nav, > details {
+      display: flex;
       flex-shrink: 0;
+      flex-basis: max-content;
       padding: $padding-base * 1vh $padding-base * 1vw $padding-base * 1vh 0;
       ul {
         line-height: 2;
@@ -57,66 +69,92 @@ body {
         margin: 0;
       }
     }
+
+    // main content
     > main {
-      flex-grow: 1;
-      //min-height: 70vh;
+      display: flex;
+      flex: 1 0 auto;
       padding: $padding-base * 1vh $padding-base * 1vw;
-      > * { margin-bottom: $margin-base * 1vh; }
-      > p { text-align: justify; }
+      .main-container {
+        flex-direction: column;
+        > * { margin-bottom: $margin-base * 1vh; }
+        > p { text-align: justify; }
+      }
     }
   }
-}
-header, footer {
-  display: flex;
-  flex: 0 0 max-content;
-  justify-content: space-between;
-  p, nav, address, ul { padding: 0; margin: 0 }
-  .brand { font-weight: bold; }
-  a, a:hover, a:visited {
-    color: inherit;
+
+  // header and footer
+  header, footer {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    p, nav, address, ul { padding: 0; margin: 0 }
+    .brand { font-weight: bold; }
+    a, a:hover, a:visited {
+      color: inherit;
+    }
+    ul {
+      list-style-type: none;
+      padding: inherit;
+      margin: inherit;
+      li {
+        display: inline;
+        &:not(:last-child) { margin-right: $margin-base * 1vw; }
+      }
+    }
   }
-  ul {
-    list-style-type: none;
-    padding: inherit;
-    margin: inherit;
+  footer {
+    flex-shrink: 0;
+    padding-top: $padding-base * 0.5vh;
   }
-  li, a { display: inline; }
-}
-header {
-  ul {
-    a:first-child { margin-left: $margin-base * 1vw; }
-  }
-}
-footer {
-  clear: both;
-  flex-shrink: 0;
-  border-top: 1px dotted $border-base-color;
-  padding-top: $padding-base * 0.5vh;
-  ul {
-    a:first-child { margin-right: $margin-base * 1vw; }
+
+  hr {
+    display: flex;
+    flex: 0 0 $margin-base * 0.5vh;
+    margin: $margin-base * 0.5vh 0;
+    height: 1px;
+    border: 0;
+    border-bottom: 1px dotted $border-base-color;
   }
 }
 
-hr {
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-right: .5rem;
-  margin-left: .5rem;
-  height: 1px;
-  border: 0;
-  border-bottom: 1px dotted $border-base-color;
-  display: flex;
-  flex: 0 0 $margin-base * 0.5 vh;
-  margin: $margin-base * 0.5vh 0;
-  clear: both;
-}
-
+// media queries
+// -- dark mode
 @media (prefers-color-scheme: dark) {
   html, body {
     background: invert($background-base-color);
+  }
+  body {
     color: invert($type-base-color);
-    hr { border-bottom-color: invert($border-base-color); }
-    footer { border-top-color: invert($border-base-color); }
     ::selection { color: $type-base-color; background: $background-base-color }
+    footer { border-top-color: invert($border-base-color); }
+    hr { border-bottom-color: invert($border-base-color); }
+  }
+}
+
+// -- mobile
+@media (max-width:768px) {
+  body {
+    .container {
+      flex-direction: column;
+      > nav, > details {
+        flex-basis: auto;
+      }
+      > main {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+// -- desktop
+@media (min-width:1100px) {
+  body {
+    .container {
+      > nav, > details {
+        flex-basis: 20%;
+      }
+    }
   }
 }
