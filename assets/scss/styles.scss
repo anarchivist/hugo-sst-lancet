@@ -1,0 +1,96 @@
+@import 'variables';
+@import 'responsive-typography';
+
+body {
+  font: $type-base-size -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+  font-size: clamp($type-base-size, strip-units($type-base-size) + 0.5vw, $type-base-size * 1.33);
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: $margin-base;
+  background: $background-base-color;
+  a, a:hover, a:visited {
+    color: inherit;
+  }
+  ::selection {
+    background: invert($background-base-color);
+    color: invert($type-base-color);
+    padding: 10px;
+  }
+}
+
+.skip-to-main {
+  position: absolute;
+  top: -66px;
+  left: 0;
+  z-index: 100;
+  font-variant: small-caps;
+}
+.skip-to-main:focus {
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.skip-to-main:hover {
+  top: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  .brand, nav { padding: 0; margin: 0 }
+  .brand { font-weight: bold; }
+  a, a:hover, a:visited {
+    color: inherit;
+  }
+  ul {
+    list-style-type: none;
+    padding: inherit;
+    margin: inherit;
+    a:first-child { margin-left: $margin-base; }
+  }
+  li, a { display: inline; }
+}
+
+hr {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: .5rem;
+  margin-left: .5rem;
+  height: 1px;
+  border: 0;
+  border-bottom: 1px dotted $border-base-color;
+  flex: 1 0 1rem;
+  margin: 1rem 0;
+  clear: both;
+}
+
+body > nav {
+  float: left;
+  min-width: $margin-base * 5;
+  padding: $padding-base $padding-base $padding-base 0;
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+body > main {
+  float: left;
+  padding: $padding-base;
+  max-width: $margin-base * 175;
+  > * { margin-bottom: $margin-base; }
+  > p { text-align: justify; }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: invert($background-base-color);
+    color: invert($type-base-color);
+    hr { border-bottom-color: invert($border-base-color); }
+    ::selection { color: $type-base-color; background: $background-base-color }
+  }
+}

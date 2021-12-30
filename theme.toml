@@ -1,0 +1,12 @@
+name = "lancet"
+license = "MIT"
+licenselink = "https://github.com/anarchivist/hugo-sst-lancet/blob/main/LICENSE"
+description = "a sensible and opinionated base theme; part of set of small sharp tools"
+homepage = "https://github.com/anarchivist/hugo-sst-lancet"
+tags = ["minimal"]
+features = ["minimal"]
+min_version = "0.41.0"
+
+[author]
+  name = "Mark A. Matienzo"
+  homepage = "https://matienzo.org/"
