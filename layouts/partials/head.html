@@ -2,6 +2,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{{ if eq .IsHome true }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-  {{ $styles := resources.Get "scss/styles.scss" | toCSS (dict "outputStyle" "compressed") | minify }}
-  <link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}">
+  {{ $styles := resources.Get "scss/styles.scss" }}
+  {{ $localoverrides := resources.Get "scss/local-overrides.scss" }}
+  {{ $css := slice $styles $localoverrides | resources.Concat "scss/main.scss" | toCSS (dict "outputStyle" "compressed") | minify }}
+  <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}">
 </head>

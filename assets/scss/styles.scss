@@ -1,7 +1,12 @@
 @import 'variables';
 @import 'responsive-typography';
 
+html {
+  background: $background-base-color;
+}
+
 body {
+  height: 100%;
   font: $type-base-size -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
   font-size: clamp($type-base-size, strip-units($type-base-size) + 0.5vw, $type-base-size * 1.33);
   line-height: 1.5;
@@ -37,10 +42,10 @@ body {
   top: 0;
 }
 
-header {
+header, footer {
   display: flex;
   justify-content: space-between;
-  .brand, nav { padding: 0; margin: 0 }
+  p, nav, address, ul { padding: 0; margin: 0 }
   .brand { font-weight: bold; }
   a, a:hover, a:visited {
     color: inherit;
@@ -49,9 +54,19 @@ header {
     list-style-type: none;
     padding: inherit;
     margin: inherit;
-    a:first-child { margin-left: $margin-base; }
   }
   li, a { display: inline; }
+}
+header ul {
+  a:first-child { margin-left: $margin-base; }
+}
+footer {
+  clear: both;
+  border-top: 1px dotted $border-base-color;
+  padding-top: $padding-base/2;
+  ul {
+    a:first-child { margin-right: $margin-base; }
+  }
 }
 
 hr {
@@ -63,7 +78,7 @@ hr {
   border: 0;
   border-bottom: 1px dotted $border-base-color;
   flex: 1 0 1rem;
-  margin: 1rem 0;
+  margin: $margin-base/2 0;
   clear: both;
 }
 
@@ -79,6 +94,7 @@ body > nav {
 }
 
 body > main {
+  min-height: 70vh;
   float: left;
   padding: $padding-base;
   max-width: $margin-base * 175;
@@ -87,10 +103,11 @@ body > main {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
+  html, body {
     background: invert($background-base-color);
     color: invert($type-base-color);
     hr { border-bottom-color: invert($border-base-color); }
+    footer { border-top-color: invert($border-base-color); }
     ::selection { color: $type-base-color; background: $background-base-color }
   }
 }
