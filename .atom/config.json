@@ -1,0 +1,9 @@
+{
+  "core": {
+    "customFileTypes": {
+      "text.html.hugo": [
+          "html"
+        ]
+    }
+  }
+}
