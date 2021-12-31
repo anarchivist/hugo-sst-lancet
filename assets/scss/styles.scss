@@ -54,12 +54,13 @@ body {
   .container {
     display: flex;
     flex: 1 0 auto;
+    flex-basis: 100%;
     flex-wrap: wrap;
     margin: $margin-base * 1vh 0;
     // sidebar
     > nav, > details {
       display: flex;
-      flex-shrink: 0;
+      flex: 0 1 auto;
       flex-basis: max-content;
       padding: $padding-base * 1vh $padding-base * 1vw $padding-base * 1vh 0;
       ul {
@@ -73,12 +74,29 @@ body {
     // main content
     > main {
       display: flex;
-      flex: 1 0 auto;
+      flex: 6 0 auto;
       padding: $padding-base * 1vh $padding-base * 1vw;
-      .main-container {
-        flex-direction: column;
+      > .main-container {
+        flex-basis: 100%;
         > * { margin-bottom: $margin-base * 1vh; }
         > p { text-align: justify; }
+        > section {
+          > ul {
+            line-height: 2;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            > li {  display: flex;  flex-wrap: wrap;  flex-direction: row; align-items: center;
+              > a {
+                flex: 0 0 1rem;
+              }
+              > hr {
+                margin: 0 $margin-base * 0.5vw;
+              }
+              > time { flex: 0 0 auto; }
+            }
+          }
+        }
       }
     }
   }
@@ -110,8 +128,8 @@ body {
   }
 
   hr {
-    display: flex;
-    flex: 0 0 $margin-base * 0.5vh;
+    //display: flex;
+    flex: 1 0 $margin-base * 0.5vh;
     margin: $margin-base * 0.5vh 0;
     height: 1px;
     border: 0;

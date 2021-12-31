@@ -1,0 +1,18 @@
+{{ define "main" }}
+<h1 class="p-name">{{ .Title }}</h1>
+<section>
+  {{ if gt (len .Data.Terms.Alphabetical) 0 }}
+  <ul>
+    {{ range .Data.Terms.Alphabetical }}
+      <li>
+        <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+        <hr>
+        <span>{{ .Count }}</span>
+      </li>
+    {{ end }}
+  </ul>
+  {{ else }}
+  <p>No terms in this taxonomy</p>
+  {{ end }}
+</section>
+{{ end }}
