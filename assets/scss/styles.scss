@@ -12,12 +12,12 @@ body {
   // base typography
   font: $type-base-size -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
   font-size: clamp($type-base-size, strip-units($type-base-size) + 0.5vw, $type-base-size * 1.33);
+  color: $type-base-color;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   // -- font colors
-  background: $background-base-color;
   a, a:hover, a:visited {
     color: inherit;
   }
@@ -29,14 +29,14 @@ body {
 
   // flexbox config
   display: flex;
-  flex-grow: 1;
+  flex: 1 1 auto;
   flex-direction: column;
   margin: $margin-base * 1vh $margin-base * 1vw;
 
   // skip link
   .skip-to-main {
     position: absolute;
-    top: $margin-base * -2vh;
+    top: $margin-base * -5vh;
     left: 0;
     z-index: 100;
     font-variant: small-caps;
@@ -53,15 +53,13 @@ body {
   // primary container
   .container {
     display: flex;
-    flex: 1 0 auto;
-    flex-basis: 100%;
-    flex-wrap: wrap;
+    flex: 1 1 100%;
+    flex-wrap: nowrap;
     margin: $margin-base * 1vh 0;
     // sidebar
     > nav, > details {
       display: flex;
-      flex: 0 1 auto;
-      flex-basis: max-content;
+      flex: 0 1 max-content;
       padding: $padding-base * 1vh $padding-base * 1vw $padding-base * 1vh 0;
       ul {
         line-height: 2;
@@ -74,26 +72,33 @@ body {
     // main content
     > main {
       display: flex;
-      flex: 6 0 auto;
+      flex: 1 1 auto;
       padding: $padding-base * 1vh $padding-base * 1vw;
       > .main-container {
-        flex-basis: 100%;
         > * { margin-bottom: $margin-base * 1vh; }
         > p { text-align: justify; }
         > section {
           > ul {
-            line-height: 2;
             list-style-type: none;
             padding: 0;
             margin: 0;
-            > li {  display: flex;  flex-wrap: wrap;  flex-direction: row; align-items: center;
+            text-align: justify;
+            > li {
+              display: flex;
+              margin-bottom: $margin-base * 1vh;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              align-items: baseline;
               > a {
-                flex: 0 0 1rem;
+                flex: 1 0 fill;
               }
               > hr {
-                margin: 0 $margin-base * 0.5vw;
+                flex: 1 1 $margin-base * 0.5vw;
+                margin: $margin-base * 0.75vh $margin-base * 0.5vw;
               }
-              > time { flex: 0 0 auto; }
+              > time {
+                flex: 0 0 max-content;
+              }
             }
           }
         }
@@ -129,7 +134,7 @@ body {
 
   hr {
     //display: flex;
-    flex: 1 0 $margin-base * 0.5vh;
+    flex: 1 0 $margin-base * 0.5vw;
     margin: $margin-base * 0.5vh 0;
     height: 1px;
     border: 0;
@@ -152,7 +157,7 @@ body {
 }
 
 // -- mobile
-@media (max-width:768px) {
+@media (max-width:1023px) {
   body {
     .container {
       flex-direction: column;
@@ -161,13 +166,24 @@ body {
       }
       > main {
         padding-left: 0;
+        .main-container > section > ul > li {
+          flex-wrap: wrap-reverse;
+          flex-direction: row-reverse;
+          justify-content: flex-end;
+          > a {
+            flex: 2 1;
+          }
+          > hr {
+            flex: 0 0 0;
+          }
+        }
       }
     }
   }
 }
 
 // -- desktop
-@media (min-width:1100px) {
+@media (min-width:1024px) {
   body {
     .container {
       > nav, > details {
