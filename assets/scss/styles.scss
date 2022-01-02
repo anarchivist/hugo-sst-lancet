@@ -31,7 +31,7 @@ body {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  margin: $margin-base * 1vh $margin-base * 1vw;
+  margin: 0 $margin-base * 1vw;
 
   // skip link
   .skip-to-main {
@@ -112,6 +112,7 @@ body {
     flex: 0 0 auto;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding: $margin-base * 1vh 0;
     p, nav, address, ul { padding: 0; margin: 0 }
     .brand { font-weight: bold; }
     a, a:hover, a:visited {
@@ -127,18 +128,20 @@ body {
       }
     }
   }
+  header {
+    border-bottom: 1px dotted $border-base-color;
+  }
   footer {
-    flex-shrink: 0;
-    padding-top: $padding-base * 0.5vh;
+    border-top: 1px dotted $border-base-color;
   }
 
   hr {
-    //display: flex;
-    flex: 1 0 $margin-base * 0.5vw;
-    margin: $margin-base * 0.5vh 0;
+    flex: 0 0 $margin-base * 0.5vw;
+    margin: 0;
+    padding: 0;
     height: 1px;
     border: 0;
-    border-bottom: 1px dotted $border-base-color;
+    border-bottom: 1px solid $border-base-color;
   }
 }
 
@@ -151,8 +154,7 @@ body {
   body {
     color: invert($type-base-color);
     ::selection { color: $type-base-color; background: $background-base-color }
-    footer { border-top-color: invert($border-base-color); }
-    hr { border-bottom-color: invert($border-base-color); }
+    hr, header, footer { border-color: invert($border-base-color); }
   }
 }
 
@@ -188,6 +190,9 @@ body {
     .container {
       > nav, > details {
         flex-basis: 20%;
+      }
+      > main {
+        flex-basis: 80%;
       }
     }
   }
