@@ -1,0 +1,7 @@
+[build]
+  base = "exampleSite"
+  publish = "public"
+  command = "hugo"
+
+[context.deploy-preview]
+  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
