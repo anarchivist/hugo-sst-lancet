@@ -1,7 +1,10 @@
-<details><summary>Menu</summary><nav>
+<details><summary>{{ T "taxonomies" }}</summary><nav>
   <ul>
-    <li><a href="/posts">Posts</a></li>
-    <li><a href="/about">About</a></li>
+    {{- range $taxonomy, $term := .Site.Taxonomies -}}
+      {{- with $.Site.GetPage (printf "/%s" $taxonomy) -}}
+      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+      {{- end -}}
+    {{- end -}}
   </ul>
 </nav>
 </details>

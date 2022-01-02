@@ -59,7 +59,7 @@ body {
     // sidebar
     > nav, > details {
       display: flex;
-      flex: 0 1 max-content;
+      flex: 1 1 max-content;
       padding: $padding-base * 1vh $padding-base * 1vw $padding-base * 1vh 0;
       ul {
         line-height: 2;
@@ -75,7 +75,8 @@ body {
       flex: 1 1 auto;
       padding: $padding-base * 1vh $padding-base * 1vw;
       > .main-container {
-        > * { margin-bottom: $margin-base * 1vh; }
+        flex-basis: 100%;
+        > * { margin-bottom: $margin-base * 1vh; flex-basis: 100%;}
         > p { text-align: justify; }
         > section {
           > ul {
@@ -84,6 +85,7 @@ body {
             margin: 0;
             text-align: justify;
             > li {
+
               display: flex;
               margin-bottom: $margin-base * 1vh;
               flex-direction: row;
