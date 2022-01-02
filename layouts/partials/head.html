@@ -6,4 +6,5 @@
   {{ $localoverrides := resources.Get "scss/local-overrides.scss" }}
   {{ $css := slice $styles $localoverrides | resources.Concat "scss/main.scss" | toCSS (dict "outputStyle" "compressed") | minify }}
   <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}">
+  {{ .Render "meta" }}
 </head>

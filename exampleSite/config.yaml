@@ -2,5 +2,6 @@ baseURL: https://hugo-sst-lancet.netlify.app/
 languageCode: en-us
 theme: hugo-sst-lancet
 title: Lancet
-description: Lancet is a sensible and opinionated base theme for Hugo. It is part of a set of small, sharp themes.
 copyright: © 2021 Mark A. Matienzo
+params:
+  description: Lancet is a sensible and opinionated base theme for Hugo. It is part of a set of small, sharp themes.
