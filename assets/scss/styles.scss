@@ -21,11 +21,13 @@ body {
   a, a:hover, a:visited {
     color: inherit;
   }
+  mark { background: $border-base-color; }
   ::selection {
     background: invert($background-base-color);
     color: invert($type-base-color);
     padding: 10px;
   }
+  mark::selection { background: darken($border-base-color, 50%); }
 
   // flexbox config
   display: flex;
@@ -76,16 +78,16 @@ body {
       padding: $padding-base * 1vh $padding-base * 1vw;
       > .main-container {
         flex-basis: 100%;
-        > * { margin-bottom: $margin-base * 1vh; flex-basis: 100%;}
-        > p { text-align: justify; }
+        p { text-align: justify; }
+        > * { flex-basis: 100%; }
         > section {
-          > ul {
+          > *+* { margin: $margin-base * 1vh 0;}
+          > ul.entries {
             list-style-type: none;
             padding: 0;
             margin: 0;
             text-align: justify;
             > li {
-
               display: flex;
               margin-bottom: $margin-base * 1vh;
               flex-direction: row;
@@ -136,15 +138,42 @@ body {
   footer {
     border-top: 1px dotted $border-base-color;
   }
+}
 
-  hr {
-    flex: 0 0 $margin-base * 0.5vw;
-    margin: 0;
-    padding: 0;
-    height: 1px;
-    border: 0;
-    border-bottom: 1px solid $border-base-color;
+// misc block-level elements
+blockquote {
+  border-left: 0.5rem double $border-base-color;
+  padding-left: $padding-base * 0.5vw;
+}
+hr {
+  flex: 0 0 $margin-base * 0.5vw;
+  margin: 0;
+  padding: 0;
+  height: 1px;
+  border: 0;
+  border-bottom: 1px solid $border-base-color;
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  th, td {
+    border: 2px solid;
+    padding: $padding-base * 0.5vh;
   }
+}
+
+// misc inline elements
+kbd {
+  line-height: 1;
+  display: inline-block;
+  font-family: inherit;
+  font-size: $type-base-size * 0.66;
+  padding: 0.2rem 0.33rem;
+  border: 2px solid;
+  border-radius: 0.25rem;
+  vertical-align: 0.3em;
 }
 
 // media queries
@@ -155,8 +184,10 @@ body {
   }
   body {
     color: invert($type-base-color);
-    ::selection { color: $type-base-color; background: $background-base-color }
-    hr, header, footer { border-color: invert($border-base-color); }
+    mark { color: invert($type-base-color); background: invert($border-base-color); }
+    ::selection {color: $type-base-color; background: $background-base-color; }
+    mark::selection {color: invert($type-base-color); }
+    hr, header, footer, blockquote { border-color: invert($border-base-color); }
   }
 }
 
