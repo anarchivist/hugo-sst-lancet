@@ -2,7 +2,7 @@
 <h1 class="p-name">{{ .Title }}</h1>
 <section>
   {{ if gt (len .Data.Terms.Alphabetical) 0 }}
-  <ul>
+  <ul class="entries">
     {{ range .Data.Terms.Alphabetical }}
       <li>
         <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
