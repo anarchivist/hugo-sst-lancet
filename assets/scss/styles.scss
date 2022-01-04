@@ -6,9 +6,6 @@ html {
   display: flex;
   height: 100%;
   flex-direction: column;
-}
-
-body {
   // base typography
   font: $type-base-size -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
   font-size: clamp($type-base-size, strip-units($type-base-size) + 0.5vw, $type-base-size * 1.33);
@@ -28,7 +25,9 @@ body {
     padding: 10px;
   }
   mark::selection { background: darken($border-base-color, 50%); }
+}
 
+body {
   // flexbox config
   display: flex;
   flex: 1 1 auto;
