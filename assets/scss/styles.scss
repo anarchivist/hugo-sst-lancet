@@ -6,9 +6,6 @@ html {
   display: flex;
   height: 100%;
   flex-direction: column;
-}
-
-body {
   // base typography
   font: $type-base-size -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
   font-size: clamp($type-base-size, strip-units($type-base-size) + 0.5vw, $type-base-size * 1.33);
@@ -28,7 +25,9 @@ body {
     padding: 10px;
   }
   mark::selection { background: darken($border-base-color, 50%); }
+}
 
+body {
   // flexbox config
   display: flex;
   flex: 1 1 auto;
@@ -62,7 +61,7 @@ body {
     > nav, > details {
       display: flex;
       flex: 1 1 max-content;
-      padding: $padding-base * 1vh $padding-base * 1vw $padding-base * 1vh 0;
+      padding: 0 $padding-base * 1vw 0 0;
       ul {
         line-height: 2;
         list-style-type: none;
@@ -75,7 +74,7 @@ body {
     > main {
       display: flex;
       flex: 1 1 auto;
-      padding: $padding-base * 1vh $padding-base * 1vw;
+      padding: 0 0 0 $padding-base * 1vw;
       > .main-container {
         flex-basis: 100%;
         p { text-align: justify; }
@@ -192,24 +191,36 @@ kbd {
 }
 
 // -- mobile
+@media (max-width:640px) {
+  html {
+    font-size: $type-mobile-size;
+  }
+  pre {
+    font-size: 0.8rem;
+  }
+}
 @media (max-width:1023px) {
   body {
     .container {
       flex-direction: column;
       > nav, > details {
-        flex-basis: auto;
+        flex: 0 0;
       }
       > main {
-        padding-left: 0;
-        .main-container > section > ul > li {
-          flex-wrap: wrap-reverse;
-          flex-direction: row-reverse;
-          justify-content: flex-end;
+        padding: $padding-base * 1vw 0 0 0;
+        .main-container > section > ul.entries > li:not(.term) {
+          flex-direction: row;
+          justify-content: flex-start;
           > a {
-            flex: 2 1;
+            order: 2;
           }
           > hr {
             flex: 0 0 0;
+            margin: 0;
+          }
+          > time {
+            order: 1;
+            margin-right: $margin-base * 1vw;
           }
         }
       }

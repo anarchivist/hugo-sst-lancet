@@ -4,10 +4,10 @@
   {{ if gt (len .Data.Terms.Alphabetical) 0 }}
   <ul class="entries">
     {{ range .Data.Terms.Alphabetical }}
-      <li>
+      <li class="term">
         <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
         <hr>
-        <span>{{ .Count }}</span>
+        <span class="count">{{ .Count }}</span>
       </li>
     {{ end }}
   </ul>
