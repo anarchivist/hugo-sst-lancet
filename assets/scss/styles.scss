@@ -201,15 +201,19 @@ kbd {
       }
       > main {
         padding-left: 0;
-        .main-container > section > ul > li {
-          flex-wrap: wrap-reverse;
-          flex-direction: row-reverse;
-          justify-content: flex-end;
+        .main-container > section > ul.entries > li:not(.term) {
+          flex-direction: row;
+          justify-content: flex-start;
           > a {
-            flex: 2 1;
+            order: 2;
           }
           > hr {
             flex: 0 0 0;
+            margin: 0;
+          }
+          > time {
+            order: 1;
+            margin-right: $margin-base * 1vw;
           }
         }
       }
