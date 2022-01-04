@@ -204,7 +204,7 @@ kbd {
     .container {
       flex-direction: column;
       > nav, > details {
-        flex-basis: auto;
+        flex: 0 0;
       }
       > main {
         padding-left: 0;
