@@ -61,7 +61,7 @@ body {
     > nav, > details {
       display: flex;
       flex: 1 1 max-content;
-      padding: $padding-base * 1vh $padding-base * 1vw $padding-base * 1vh 0;
+      padding: 0 $padding-base * 1vw 0 0;
       ul {
         line-height: 2;
         list-style-type: none;
@@ -74,7 +74,7 @@ body {
     > main {
       display: flex;
       flex: 1 1 auto;
-      padding: $padding-base * 1vh $padding-base * 1vw;
+      padding: 0 0 0 $padding-base * 1vw;
       > .main-container {
         flex-basis: 100%;
         p { text-align: justify; }
@@ -207,7 +207,7 @@ kbd {
         flex: 0 0;
       }
       > main {
-        padding-left: 0;
+        padding: $padding-base * 1vw 0 0 0;
         .main-container > section > ul.entries > li:not(.term) {
           flex-direction: row;
           justify-content: flex-start;
