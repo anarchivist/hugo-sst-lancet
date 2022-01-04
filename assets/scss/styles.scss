@@ -192,6 +192,14 @@ kbd {
 }
 
 // -- mobile
+@media (max-width:640px) {
+  html {
+    font-size: $type-mobile-size;
+  }
+  pre {
+    font-size: 0.8rem;
+  }
+}
 @media (max-width:1023px) {
   body {
     .container {
