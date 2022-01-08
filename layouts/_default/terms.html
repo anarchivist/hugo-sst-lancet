@@ -1,5 +1,5 @@
 {{ define "main" }}
-<h1 class="p-name">{{ .Title }}</h1>
+<h1 class="p-name">{{ .Render "title" }}</h1>
 <section>
   {{ if gt (len .Data.Terms.Alphabetical) 0 }}
   <ul class="entries">

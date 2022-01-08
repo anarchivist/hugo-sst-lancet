@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ if eq .IsHome true }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <title>{{ if eq .IsHome true }}{{ .Site.Title }}{{ else }}{{ .Render "title" | plainify | htmlUnescape }} | {{ .Site.Title }}{{ end }}</title>
   {{ $styles := resources.Get "scss/styles.scss" }}
   {{ $localoverrides := resources.Get "scss/local-overrides.scss" }}
   {{ $css := slice $styles $localoverrides | resources.Concat "scss/main.scss" | toCSS (dict "outputStyle" "compressed") | minify }}
