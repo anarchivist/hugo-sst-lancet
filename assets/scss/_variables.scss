@@ -1,8 +1,11 @@
 $type-base-size: 1.25rem;
 $type-mobile-size: 1rem;
 $type-base-color: #000;
+$type-dark-color: invert($type-dark-color);
 $background-base-color: #fff;
+$background-dark-color: invert($background-base-color);
 $border-base-color: #ccc;
+$border-dark-color: invert($border-base-color);
 $type-size-ratio: 1.11;
 $margin-base: 2.5;
 $padding-base: $margin-base;

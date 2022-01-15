@@ -179,14 +179,14 @@ kbd {
 // -- dark mode
 @media (prefers-color-scheme: dark) {
   html, body {
-    background: invert($background-base-color);
+    background: $background-dark-color;
   }
   body {
-    color: invert($type-base-color);
-    mark { color: invert($type-base-color); background: invert($border-base-color); }
-    ::selection {color: $type-base-color; background: $background-base-color; }
-    mark::selection {color: invert($type-base-color); }
-    hr, header, footer, blockquote { border-color: invert($border-base-color); }
+    color: $type-dark-color;
+    mark { color: $type-dark-color; background: $border-dark-color; }
+    ::selection { color: $type-base-color; background: $background-base-color; }
+    mark::selection { color: $type-dark-color; }
+    hr, header, footer, blockquote { border-color: $border-dark-color; }
   }
 }
 
