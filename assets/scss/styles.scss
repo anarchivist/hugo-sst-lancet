@@ -7,7 +7,7 @@ html {
   height: 100%;
   flex-direction: column;
   // base typography
-  font: $type-base-size -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+  font: $type-base-size $type-font-face;
   font-size: clamp($type-base-size, strip-units($type-base-size) + 0.5vw, $type-base-size * 1.33);
   color: $type-base-color;
   line-height: 1.5;
