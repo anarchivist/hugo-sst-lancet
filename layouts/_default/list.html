@@ -5,9 +5,7 @@
 </section>
 <section>
   <ul class="entries" reversed>
-    {{- range .Data.Pages.ByDate.Reverse -}}
-      {{- .Render "li" -}}
-    {{- end -}}
+    {{- .Render "li" -}}
   </ul>
 </section>
 {{ end }}

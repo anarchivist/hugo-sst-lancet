@@ -2,7 +2,7 @@
 <h1 class="p-name">{{ .Render "title" }}</h1>
 <section>
   <ul class="entries">
-    {{- range .Data.Pages.ByDate.Reverse -}}
+    {{- range .Paginator.Pages -}}
       {{- .Render "li" -}}
     {{- end -}}
   </ul>

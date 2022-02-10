@@ -86,7 +86,7 @@ body {
             padding: 0;
             margin: 0;
             text-align: justify;
-            > li {
+            > li:not(.h-entry) {
               display: flex;
               margin-bottom: $margin-base * 1vh;
               flex-direction: row;
