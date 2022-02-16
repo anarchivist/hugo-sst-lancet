@@ -1,0 +1,13 @@
+{{ define "main" }}
+<h1 class="p-name">e{{ .Render "title" }}</h1>
+<section>
+  {{ .Content }}
+</section>
+<section>
+  <ul class="entries" reversed>
+    {{- range .Pages -}}
+      {{- .Render "li" -}}
+    {{- end -}}
+  </ul>
+</section>
+{{ end }}

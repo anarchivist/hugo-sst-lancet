@@ -1,1 +1,1 @@
-{{ .Title }}
+{{ if .IsNode }}{{- .Title -}}{{ else }}{{ .Title }} {{ end }}

@@ -1,4 +1,5 @@
 <li>
-  <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a><hr>
+  <a href="{{ .Permalink }}" title="{{ .Render "title" }}">{{ .Render
+    "title" }}</a><hr>
   <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
 </li>

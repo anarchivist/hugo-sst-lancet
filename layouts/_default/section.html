@@ -1,5 +1,5 @@
 {{ define "main" }}
-<h1 class="p-name">{{ .Render "title" }}</h1>
+<h1 class="p-name">{{ .Title }}</h1>
 <section>
   <ul class="entries">
     {{- range .Paginator.Pages -}}
